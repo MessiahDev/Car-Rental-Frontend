@@ -1,16 +1,16 @@
 <template>
-  <Dashboard />
+  <Customers />
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
-  import Dashboard from '../components/Dashboard.vue'
+  import Customers from '../components/Customer.vue'
 
   export default Vue.extend({
-    name: 'Home',
+    name: 'customers',
 
     components: {
-      Dashboard,
+      Customers,
     },
   })
 </script>
