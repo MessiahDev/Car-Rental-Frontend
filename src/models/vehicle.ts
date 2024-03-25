@@ -8,6 +8,7 @@ export default class Vehicle implements Shared.IEntity {
     public startDate: Date = new Date();
     public endDate: Date = new Date();
     public isActive: boolean = false;
+    public status: string = '';
     public categoryId: number = 0;
     public category?: Category;
   }
