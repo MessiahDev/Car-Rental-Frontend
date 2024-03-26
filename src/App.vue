@@ -4,6 +4,21 @@
       v-model="drawer"
       app
     >
+    <v-sheet
+      class="pa-4"
+      color="grey-lighten-4"
+    >
+      <v-avatar
+        class="mb-4"
+        color="#757575"
+        size="64"
+      ></v-avatar>
+
+      <div>Usuário: Alex</div>
+    </v-sheet>
+
+    <v-divider></v-divider>
+
     <v-list>
         <v-list-item v-for="(item, index) in items" :key="index" link  @click="navigate(item.route)">
           <v-list-item-icon>
@@ -16,10 +31,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar app color="primary">
+      <v-app-bar-nav-icon @click="drawer = !drawer" style="color: white;"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title style="color: white;">LocaFácil</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -47,9 +62,7 @@ export default Vue.extend({
 
   methods: {
     navigate(route: string) {
-      // Verifica se a rota que está tentando navegar é diferente da rota atual
       if (this.$route.path !== route) {
-        // Navega para a rota selecionada
         this.$router.push(route);
       }
     }

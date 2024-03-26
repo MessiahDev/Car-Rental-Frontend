@@ -7,8 +7,8 @@ import vuetify from './plugins/vuetify'
 import VueSweetalert2 from 'vue-sweetalert2';
 
 const options = {
-  confirmButtonColor: '#41b882',
-  cancelButtonColor: '#ff7674',
+  confirmButtonColor: 'primary',
+  cancelButtonColor: 'secondary',
 };
 
 Vue.config.productionTip = false
