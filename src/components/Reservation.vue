@@ -1,7 +1,7 @@
 <template>
-    <div>
-      <h1>This is an reservation page</h1>
-    </div>
+    <v-container fluid>
+        
+    </v-container>
 </template>
 
 <script lang="ts">

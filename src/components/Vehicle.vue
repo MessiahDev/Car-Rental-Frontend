@@ -28,7 +28,6 @@
         </v-card-text>
       </v-card>
 
-      <!-- Lista de veículos -->
       <v-row>
         <v-col cols="12">
           <v-card-title class="mb-0 pb-0">Lista de Veículos</v-card-title>
@@ -108,6 +107,7 @@
   import { VehicleService } from '../services/vehicleServices';
   import { CategoryService } from '../services/categoryService';
   import Category from '../models/category';
+  import Vehicle from '@/models/vehicle';
 
   export default Vue.extend({
     name: 'Vehicles',
@@ -120,7 +120,7 @@
           status: '',
           categoryId: null as null | number,
         },
-        vehicles: [] as any[],
+        vehicles: [] as Vehicle[],
         categories: [] as Category[],
         showCategoryDialog: false,
         newCategory: {
@@ -140,7 +140,7 @@
         ],
         
         showEditDialog: false,
-        editVehicle: {} as any,
+        editVehicle: {} as Vehicle,
       };
     },
 
@@ -159,7 +159,7 @@
         }
       },
 
-      updateVehicle(vehicle: any) {
+      updateVehicle(vehicle: Vehicle) {
         this.editVehicle = { ...vehicle };
         this.showEditDialog = true;
       },
@@ -194,14 +194,21 @@
 
           const category = selectedCategory;
 
-          await VehicleService.createVehicle({
+          const newVehicle: Vehicle = {
+            id: 0,
             name: this.newVehicle.name,
             model: this.newVehicle.model,
             categoryId: category.id,
-            status: this.newVehicle.status, // Enviando o status selecionado ao criar o veículo
-          });
+            status: this.newVehicle.status,
+            vehicleId: 0,
+            customerId: 0,
+            registerDate: new Date(),
+            isActive: true
+          };
 
-          this.newVehicle = { name: '', model: '',  status: '', categoryId: null }; // Limpando os campos após a criação
+          await VehicleService.createVehicle(newVehicle);
+
+          this.newVehicle = { name: '', model: '',  status: '', categoryId: null };
           this.fetchVehicles();
         } catch (error) {
           console.error('Error creating vehicle:', error);
@@ -246,8 +253,15 @@
 
       async createCategory() {
         try {
-          await CategoryService.createCategory(this.newCategory);
-          this.newCategory = { name: '' };
+          const newCategory: Category = {
+            id: 0, // Assumindo que o ID será gerado pelo servidor
+            name: this.newCategory.name,
+            vehicles: []
+          };
+
+          await CategoryService.createCategory(newCategory);
+
+          this.newCategory.name = '';
           this.showCategoryDialog = false;
           this.fetchCategories();
         } catch (error) {
@@ -257,5 +271,6 @@
     },
   });
 </script>
+
 <style scoped>
 </style>

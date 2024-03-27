@@ -29,7 +29,7 @@ export default Vue.extend({
         { title: 'Total de Vendas', subtitle: 'Realizadas', value: '30' },
       ],
 
-      vehicles: 0,
+      vehicles: [] as Vehicle[],
     };
   },
   mounted() {
@@ -40,14 +40,12 @@ export default Vue.extend({
     async fetchVehicles() {
       try {
         const response = await VehicleService.getVehicleCount();
-        this.vehicles = response.data;
-        this.cards[0].value = this.vehicles.toString(); // Atualize o valor do card
-        console.log(response.data)
+        this.vehicles = [response.data];
+        this.cards[0].value = this.vehicles.toString();
       } catch (error) {
         console.error('Error fetching vehicles:', error);
       }
     },
-    // Outros métodos para manipular os dados dos veículos...
   },
 });
 </script>

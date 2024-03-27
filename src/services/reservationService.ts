@@ -1,22 +1,23 @@
 import axios, { AxiosResponse } from 'axios';
 import { BASE_URL } from '../apiConfig/apiConfig';
+import Reservation from '../models/reservation';
 
 const BASE = `${BASE_URL}/Reservation`;
 
 export const ReservationService = {
-  async getAllReservations(): Promise<AxiosResponse<any[]>> {
+  async getAllReservations(): Promise<AxiosResponse<Reservation[]>> {
     return await axios.get(BASE);
   },
 
-  async getReservationById(id: number): Promise<AxiosResponse<any>> {
+  async getReservationById(id: number): Promise<AxiosResponse<Reservation>> {
     return await axios.get(`${BASE}/${id}`);
   },
 
-  async createReservation(reservation: any): Promise<AxiosResponse<any>> {
+  async createReservation(reservation: Reservation): Promise<AxiosResponse<Reservation>> {
     return await axios.post(BASE, reservation);
   },
 
-  async updateReservation(id: number, reservation: any): Promise<void> {
+  async updateReservation(id: number, reservation: Reservation): Promise<void> {
     await axios.put(`${BASE}/${id}`, reservation);
   },
 

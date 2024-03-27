@@ -1,22 +1,23 @@
 import axios, { AxiosResponse } from 'axios';
 import { BASE_URL } from '../apiConfig/apiConfig';
+import Category from '../models/category';
 
 const BASE = `${BASE_URL}/Category`;
 
 export const CategoryService = {
-  async getAllCategories(): Promise<AxiosResponse<any[]>> {
+  async getAllCategories(): Promise<AxiosResponse<Category[]>> {
     return await axios.get(BASE);
   },
 
-  async getCategoryById(id: number): Promise<AxiosResponse<any>> {
+  async getCategoryById(id: number): Promise<AxiosResponse<Category>> {
     return await axios.get(`${BASE}/${id}`);
   },
 
-  async createCategory(category: any): Promise<AxiosResponse<any>> {
+  async createCategory(category: Category): Promise<AxiosResponse<Category>> {
     return await axios.post(BASE, category);
   },
 
-  async updateCategory(id: number, category: any): Promise<void> {
+  async updateCategory(id: number, category: Category): Promise<void> {
     await axios.put(`${BASE}/${id}`, category);
   },
 
