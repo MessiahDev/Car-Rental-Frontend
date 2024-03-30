@@ -10,31 +10,31 @@
         <v-form @submit.prevent="createCustomer">
           <v-row cols="12">
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.name" label="Nome" outlined dense required></v-text-field>
+              <v-text-field v-model="newCustomer.name" label="Nome" outlined dense clearable required></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.email" label="E-mail" outlined dense required></v-text-field>
+              <v-text-field v-model="newCustomer.email" label="E-mail" type="email" outlined dense clearable required></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.cellPhone" label="Celular" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.cellPhone" label="Telefone celular" type="phone" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.phone" label="Telefone" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.phone" label="Telefone" type="phone" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.address" label="Endereço" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.address" label="Endereço" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.cpf" label="CPF" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.cpf" label="CPF" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.rg" label="RG" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.rg" label="RG" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense></v-text-field>
+              <v-text-field v-model="newCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense clearable></v-text-field>
             </v-col>
           </v-row>
           <v-btn type="submit" color="primary">Cadastrar</v-btn>
@@ -86,31 +86,31 @@
           <v-form @submit.prevent="saveUpdatedCustomer">
               <v-row cols="12" class="ma-4">
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.name" label="Nome" outlined dense required></v-text-field>
+                      <v-text-field v-model="editCustomer.name" label="Nome" outlined dense clearable required></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.email" label="E-mail" outlined dense required></v-text-field>
+                      <v-text-field v-model="editCustomer.email" label="E-mail" outlined dense clearable required></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.phone" label="Telefone" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.phone" label="Telefone" outlined dense clearable></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.cellPhone" label="Celular" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.cellPhone" label="Celular" outlined dense clearable></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.address" label="Endereço" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.address" label="Endereço" outlined dense clearable></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense clearable></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.cpf" label="CPF" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.cpf" label="CPF" outlined dense clearable></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.rg" label="RG" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.rg" label="RG" outlined dense clearable></v-text-field>
                   </v-col>
                   <v-col cols="3">
-                      <v-text-field v-model="editCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense></v-text-field>
+                      <v-text-field v-model="editCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense clearable></v-text-field>
                   </v-col>
               </v-row>
               <v-btn type="submit" color="primary">Salvar</v-btn>

@@ -1,105 +1,89 @@
-  <template>
-    <v-container fluid>
+<template>
+  <v-container fluid>
+    <h1>Veículos</h1>
 
-      <h1>Veículos</h1>
+    <v-card>
+      <v-card-title>Cadastrar Veículo</v-card-title>
+      <v-card-text>
+        <v-form @submit.prevent="createVehicle" enctype="multipart/form-data">
+          <v-row cols="12">
+            <v-col cols="2">
+              <v-text-field v-model="newVehicle.name" label="Nome do Veículo" outlined clearable dense required></v-text-field>
+            </v-col>
+            <v-col cols="2">
+              <v-text-field v-model="newVehicle.model" label="Modelo do Veículo" outlined clearable dense required></v-text-field>
+            </v-col>
+            <v-col cols="2">
+              <v-select density="comfortable" v-model="newVehicle.categoryId" :items="categories" item-value="id" item-text="group" label="Categoria do Veículo" clearable outlined dense required></v-select>
+            </v-col>             
+            <v-col cols="2" style="color: white;">
+              <v-btn type="submit" color="primary">Cadastrar</v-btn>
+            </v-col>
+          </v-row>
+        </v-form>
+      </v-card-text>
+    </v-card>
 
+    <v-row>
+      <v-col cols="12">
+        <v-card-title class="mb-0 pb-0">Lista de Veículos</v-card-title>
+        <v-row>
+          <v-col cols="12">
+            <v-card outlined class="my-0 py-0">
+              <v-list-item>
+                <v-list-item-content class="my-0 py-0">
+                  <v-col cols="2" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Nome</v-chip></v-col>
+                  <v-col cols="2" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Descrição</v-chip></v-col>
+                  <v-col cols="2" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Categoria</v-chip></v-col>
+                  <v-col cols="4" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Ações</v-chip></v-col>
+                </v-list-item-content>
+              </v-list-item>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row class="my-0 py-0">
+          <v-col v-for="vehicle in vehicles" :key="vehicle.id" cols="12" class="my-0 py-0">
+            <v-card outlined class="my-0 py-0">
+              <v-list-item>
+                <v-list-item-content class="my-0 py-0">
+                  <v-col cols="2" class="my-0 py-0"><span>{{ vehicle.name }}</span></v-col>
+                  <v-col cols="2" class="my-0 py-0"><span>{{ vehicle.model }}</span></v-col>
+                  <v-col cols="2" class="my-0 py-0"><span>{{ getCategoryName(vehicle.categoryId) }}</span></v-col>
+                  <v-col class="my-0 py-0">
+                    <v-btn outlined @click="updateVehicle(vehicle)" color="primary" class="mx-1">Editar</v-btn>
+                    <v-btn @click="confirmDelete(vehicle.id)" color="error">Excluir</v-btn>
+                  </v-col>
+                </v-list-item-content>
+              </v-list-item>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+
+    <v-dialog v-model="showEditDialog" max-width="1000px" max-height="600px">
       <v-card>
-        <v-card-title>Cadastrar Veículo</v-card-title>
+        <v-card-title>Editar Veículo</v-card-title>
         <v-card-text>
-          <v-form @submit.prevent="createVehicle">
-            <v-row cols="12">
+          <v-form @submit.prevent="saveUpdatedVehicle">
+            <v-row cols="12" class="ma-4">
               <v-col cols="3">
-                <v-text-field v-model="newVehicle.name" label="Nome do Veículo" outlined dense required></v-text-field>
+                <v-text-field v-model="editVehicle.name" label="Nome do Veículo" outlined dense required></v-text-field>
               </v-col>
               <v-col cols="3">
-                <v-text-field v-model="newVehicle.model" label="Modelo do Veículo" outlined dense required></v-text-field>
-              </v-col>
-              <v-col cols="2">
-                <v-select density="comfortable" v-model="newVehicle.status" :items="getVeicleStatusOptions" label="Status do Veículo" outlined dense required></v-select>
-              </v-col>
-              <v-col cols="2">
-                <v-select density="comfortable" v-model="newVehicle.categoryId" :items="categories" item-value="id" item-text="name" label="Categoria do Veículo" outlined dense required></v-select>
-              </v-col>
-              <v-col cols="2" style="color: white;">
-                <v-btn type="submit" color="primary">Cadastrar</v-btn>
+                <v-text-field v-model="editVehicle.model" label="Modelo do Veículo" outlined dense required></v-text-field>
+              </v-col>                        
+              <v-col cols="3">
+                <v-autocomplete v-model="editVehicle.categoryId" :items="categories" item-value="id" item-text="name" label="Categoria do Veículo" outlined dense clearable required></v-autocomplete>
               </v-col>
             </v-row>
+            <v-btn type="submit" color="primary">Salvar</v-btn>
           </v-form>
         </v-card-text>
       </v-card>
-
-      <v-row>
-        <v-col cols="12">
-          <v-card-title class="mb-0 pb-0">Lista de Veículos</v-card-title>
-          <v-row>
-            <v-col cols="12">
-              <v-card outlined class="my-0 py-0">
-                <v-list-item>
-                  <v-list-item-content class="my-0 py-0">
-                    <v-col cols="2" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Nome</v-chip></v-col>
-                    <v-col cols="2" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Modelo</v-chip></v-col>
-                    <v-col cols="2" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Categoria</v-chip></v-col>
-                    <v-col cols="4" class="my-0 py-0"><v-chip color="white" style="min-width: 90px; justify-content: center; align-items: center; font-weight: bold;">Status</v-chip></v-col>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row class="my-0 py-0">
-            <v-col v-for="vehicle in vehicles" :key="vehicle.id" cols="12" class="my-0 py-0">
-              <v-card outlined class="my-0 py-0">
-                <v-list-item>
-                  <v-list-item-content class="my-0 py-0">
-                    <v-col cols="2" class="my-0 py-0"><span>{{ vehicle.name }}</span></v-col>
-                    <v-col cols="2" class="my-0 py-0"><span>{{ vehicle.model }}</span></v-col>
-                    <v-col cols="2" class="my-0 py-0"><span>{{ getCategoryName(vehicle.categoryId) }}</span></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Disponível'" class="my-0 py-0"><v-chip color="green" style="color: white; width: 90px; justify-content: center; align-items: center;">Disponível</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Alugado'" class="my-0 py-0"><v-chip size="32px" color="blue" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Alugado</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Em Manutenção'" class="my-0 py-0"><v-chip size="32px" color="orange" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Em Manutenção</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Fora de Serviço'" class="my-0 py-0"><v-chip size="32px" color="red" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Fora de Serviço</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Reservado'" class="my-0 py-0"><v-chip size="32px" color="purple" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Reservado</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Esperando Manutenção'" class="my-0 py-0"><v-chip size="32px" color="orange" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Esperando Manutenção</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Em Uso Pessoal'" class="my-0 py-0"><v-chip size="32px" color="blue" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Em Uso Pessoal</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Em Reparo'" class="my-0 py-0"><v-chip size="32px" color="orange" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Em Reparo</v-chip></v-col>
-                    <v-col cols="4" v-if="vehicle.status == 'Roubado'" class="my-0 py-0"><v-chip size="32px" color="red" style="color: white; min-width: 90px; justify-content: center; align-items: center;">Roubado</v-chip></v-col>
-                    <v-col class="my-0 py-0">
-                      <v-btn outlined @click="updateVehicle(vehicle)" color="primary" class="mx-1">Editar</v-btn>
-                      <v-btn @click="confirmDelete(vehicle.id)" color="error">Excluir</v-btn>
-                    </v-col>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-
-      <v-dialog v-model="showEditDialog" max-width="1000px" max-height="600px">
-          <v-card>
-              <v-card-title>Editar Veículo</v-card-title>
-              <v-card-text>
-                  <v-form @submit.prevent="saveUpdatedVehicle">
-                      <v-row cols="12" class="ma-4">
-                          <v-col cols="3">
-                              <v-text-field v-model="editVehicle.name" label="Nome do Veículo" outlined dense required></v-text-field>
-                          </v-col>
-                          <v-col cols="3">
-                              <v-text-field v-model="editVehicle.model" label="Modelo do Veículo" outlined dense required></v-text-field>
-                          </v-col>
-                          <v-col cols="3">
-                              <v-select v-model="editVehicle.status" :items="getVeicleStatusOptions" item-value="value" item-text="text" label="Categoria do Veículo" outlined dense required></v-select>
-                          </v-col>                          
-                          <v-col cols="3">
-                              <v-select v-model="editVehicle.categoryId" :items="categories" item-value="id" item-text="name" label="Categoria do Veículo" outlined dense required></v-select>
-                          </v-col>
-                      </v-row>
-                      <v-btn type="submit" color="primary">Salvar</v-btn>
-                  </v-form>
-              </v-card-text>
-          </v-card>
-      </v-dialog>
-    </v-container>
-  </template>
+    </v-dialog>
+  </v-container>
+</template>
 
 <script lang="ts">
   import Vue from 'vue';
@@ -107,7 +91,7 @@
   import { VehicleService } from '../services/vehicleServices';
   import { CategoryService } from '../services/categoryService';
   import Category from '../models/category';
-  import Vehicle from '@/models/vehicle';
+  import Vehicle from '../models/vehicle';
 
   export default Vue.extend({
     name: 'Vehicles',
@@ -117,17 +101,16 @@
         newVehicle: {
           name: '',
           model: '',
-          status: '',
-          categoryId: null as null | number,
+          categoryId: 0,
         },
         vehicles: [] as Vehicle[],
         categories: [] as Category[],
         showCategoryDialog: false,
         newCategory: {
-          name: ''
+          group: '',
+          description: '',
         },
-
-        getVeicleStatusOptions: [
+        getVehicleStatusOptions: [
           'Disponível',
           'Alugado',
           'Em Manutenção',
@@ -138,9 +121,9 @@
           'Em Reparo',
           'Roubado'
         ],
-        
         showEditDialog: false,
         editVehicle: {} as Vehicle,
+        selectedImage: null,
       };
     },
 
@@ -159,7 +142,7 @@
         }
       },
 
-      updateVehicle(vehicle: Vehicle) {
+      async updateVehicle(vehicle: Vehicle) {
         this.editVehicle = { ...vehicle };
         this.showEditDialog = true;
       },
@@ -185,31 +168,40 @@
 
       async createVehicle() {
         try {
-          const selectedCategory = this.categories.find(option => option.id === this.newVehicle.categoryId);
+          if (this.newVehicle.name && this.newVehicle.model && this.newVehicle.categoryId){
 
-          if (!selectedCategory) {
-            console.error('Error: Selected category not found.');
-            return;
+            const category = this.categories.find(option => option.id === this.newVehicle.categoryId);
+
+            if (!category) {
+              console.error('Error: Catrgoria selecionada não encontrada.');
+              return;
+            }
+
+            const newVehicle: Vehicle = {
+              id: 0,
+              name: this.newVehicle.name,
+              model: this.newVehicle.model,
+              categoryId: category.id,
+              customerId: 0,
+              registerDate: new Date(),
+              isActive: true
+            };
+
+            const response = await VehicleService.createVehicle(newVehicle);
+
+            if (response.status === 201) {
+              console.log('Veículo criado com sucesso:', response.data);
+              this.newVehicle = { name: '', model: '', categoryId: 0 };
+              this.fetchVehicles();
+              await Swal.fire('Sucesso!', 'Veículo criado com sucesso!', 'success');
+            } else {
+              console.error('Erro ao criar veículo:', response.statusText);
+            }
           }
-
-          const category = selectedCategory;
-
-          const newVehicle: Vehicle = {
-            id: 0,
-            name: this.newVehicle.name,
-            model: this.newVehicle.model,
-            categoryId: category.id,
-            status: this.newVehicle.status,
-            vehicleId: 0,
-            customerId: 0,
-            registerDate: new Date(),
-            isActive: true
-          };
-
-          await VehicleService.createVehicle(newVehicle);
-
-          this.newVehicle = { name: '', model: '',  status: '', categoryId: null };
-          this.fetchVehicles();
+          else {
+            await Swal.fire('Aviso!', 'Todos os campos devem ser preenchidos!', 'warning');
+            return true;
+          }
         } catch (error) {
           console.error('Error creating vehicle:', error);
         }
@@ -248,20 +240,22 @@
 
       getCategoryName(categoryId: number) {
         const category = this.categories.find(cat => cat.id === categoryId);
-        return category ? category.name : '';
+        return category ? category.group : '';
       },
 
       async createCategory() {
         try {
           const newCategory: Category = {
-            id: 0, // Assumindo que o ID será gerado pelo servidor
-            name: this.newCategory.name,
+            id: 0,
+            group: this.newCategory.group,
+            description: this.newCategory.description,
             vehicles: []
           };
 
           await CategoryService.createCategory(newCategory);
 
-          this.newCategory.name = '';
+          this.newCategory.group = '';
+          this.newCategory.description = '';
           this.showCategoryDialog = false;
           this.fetchCategories();
         } catch (error) {

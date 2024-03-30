@@ -9,6 +9,10 @@ export const CategoryService = {
     return await axios.get(BASE);
   },
 
+  async getCategoriesAndVehicles(): Promise<AxiosResponse<Category[]>> {
+    return await axios.get(`${BASE}/CategoriesAndVehicles`);
+  },
+
   async getCategoryById(id: number): Promise<AxiosResponse<Category>> {
     return await axios.get(`${BASE}/${id}`);
   },
