@@ -74,7 +74,7 @@
                 <v-text-field v-model="editVehicle.model" label="Modelo do Veículo" outlined dense required></v-text-field>
               </v-col>                        
               <v-col cols="3">
-                <v-autocomplete v-model="editVehicle.categoryId" :items="categories" item-value="id" item-text="name" label="Categoria do Veículo" outlined dense clearable required></v-autocomplete>
+                <v-autocomplete v-model="editVehicle.categoryId" :items="categories" item-value="id" item-text="group" label="Categoria do Veículo" outlined dense clearable required></v-autocomplete>
               </v-col>
             </v-row>
             <v-btn type="submit" color="primary">Salvar</v-btn>
@@ -110,17 +110,7 @@
           group: '',
           description: '',
         },
-        getVehicleStatusOptions: [
-          'Disponível',
-          'Alugado',
-          'Em Manutenção',
-          'Fora de Serviço',
-          'Reservado',
-          'Esperando Manutenção',
-          'Em Uso Pessoal',
-          'Em Reparo',
-          'Roubado'
-        ],
+
         showEditDialog: false,
         editVehicle: {} as Vehicle,
         selectedImage: null,
@@ -151,6 +141,7 @@
         try {
           await VehicleService.updateVehicle(this.editVehicle.id, this.editVehicle);
           this.showEditDialog = false;
+          await Swal.fire('Sucesso!', 'Veículo atualizado com sucesso!', 'success');
           this.fetchVehicles();
         } catch (error) {
           console.error('Error updating vehicle:', error);
