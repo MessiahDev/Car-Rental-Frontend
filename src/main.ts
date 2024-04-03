@@ -3,7 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-//import './assets/scripts/custom';
+import './assets/scripts/custom';
 import vuetify from './plugins/vuetify'
 import VueSweetalert2 from 'vue-sweetalert2';
 

@@ -240,6 +240,8 @@
             id: 0,
             group: this.newCategory.group,
             description: this.newCategory.description,
+            price: 0,
+            totalPrice: 0,
             vehicles: []
           };
 
