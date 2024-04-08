@@ -9,6 +9,10 @@ export const ReservationService = {
     return await axios.get(BASE);
   },
 
+  async getReservationsAndCategories(): Promise<AxiosResponse<Reservation[]>> {
+    return await axios.get(`${BASE}/ReservationsAndCategories`);
+  },
+
   async getReservationById(id: number): Promise<AxiosResponse<Reservation>> {
     return await axios.get(`${BASE}/${id}`);
   },

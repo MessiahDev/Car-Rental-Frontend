@@ -13,28 +13,35 @@
               <v-text-field v-model="newCustomer.name" label="Nome" outlined dense clearable required></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.email" label="E-mail" type="email" outlined dense clearable required></v-text-field>
+              <v-text-field v-model="newCustomer.email" label="E-mail" type="email" outlined dense clearable
+                required></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.cellPhone" label="Telefone celular" type="phone" outlined dense clearable></v-text-field>
+              <v-text-field v-model="newCustomer.cellPhone" label="Telefone celular"
+                v-mask="['(##) ####-####', '(##) #####-####']" type="phone" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.phone" label="Telefone" type="phone" outlined dense clearable></v-text-field>
+              <v-text-field v-model="newCustomer.phone" label="Telefone" v-mask="['(##) ####-####', '(##) #####-####']"
+                type="phone" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
               <v-text-field v-model="newCustomer.address" label="Endereço" outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense clearable></v-text-field>
+              <v-text-field v-model="newCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense
+                clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.cpf" label="CPF" outlined dense clearable></v-text-field>
+              <v-text-field v-model="newCustomer.cpf" label="CPF/CNPJ" v-mask="['###.###.###-##', '##.###.###/####-##']"
+                outlined dense clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.rg" label="RG" outlined dense clearable></v-text-field>
+              <v-text-field v-model="newCustomer.rg" label="RG" v-mask="'##.###.###-#'" outlined dense
+                clearable></v-text-field>
             </v-col>
             <v-col cols="3">
-              <v-text-field v-model="newCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense clearable></v-text-field>
+              <v-text-field v-model="newCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense
+                clearable></v-text-field>
             </v-col>
           </v-row>
           <v-btn type="submit" color="primary">Cadastrar</v-btn>
@@ -50,10 +57,14 @@
             <v-card outlined class="my-0 py-0">
               <v-list-item>
                 <v-list-item-content class="my-0 py-0">
-                  <v-col cols="3" class="my-0 py-0"><v-chip color="white" style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">Nome</v-chip></v-col>
-                  <v-col cols="3" class="my-0 py-0"><v-chip color="white" style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">E-mail</v-chip></v-col>
-                  <v-col cols="3" class="my-0 py-0"><v-chip color="white" style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">Telefone</v-chip></v-col>
-                  <v-col cols="3" class="my-0 py-0"><v-chip color="white" style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">Ações</v-chip></v-col>
+                  <v-col cols="3" class="my-0 py-0"><v-chip color="white"
+                      style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">Nome</v-chip></v-col>
+                  <v-col cols="3" class="my-0 py-0"><v-chip color="white"
+                      style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">E-mail</v-chip></v-col>
+                  <v-col cols="3" class="my-0 py-0"><v-chip color="white"
+                      style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">Telefone</v-chip></v-col>
+                  <v-col cols="3" class="my-0 py-0"><v-chip color="white"
+                      style="min-width: 120px; justify-content: center; align-items: center; font-weight: bold;">Ações</v-chip></v-col>
                 </v-list-item-content>
               </v-list-item>
             </v-card>
@@ -81,44 +92,51 @@
 
     <v-dialog v-model="showEditDialog" max-width="1000px" max-height="600px">
       <v-card>
-      <v-card-title>Editar Cliente</v-card-title>
-      <v-card-text>
+        <v-card-title>Editar Cliente</v-card-title>
+        <v-card-text>
           <v-form @submit.prevent="saveUpdatedCustomer">
-              <v-row cols="12" class="ma-4">
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.name" label="Nome" outlined dense clearable required></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.email" label="E-mail" outlined dense clearable required></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.phone" label="Telefone" outlined dense clearable></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.cellPhone" label="Celular" outlined dense clearable></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.address" label="Endereço" outlined dense clearable></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense clearable></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.cpf" label="CPF" outlined dense clearable></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.rg" label="RG" outlined dense clearable></v-text-field>
-                  </v-col>
-                  <v-col cols="3">
-                      <v-text-field v-model="editCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense clearable></v-text-field>
-                  </v-col>
-              </v-row>
-              <v-btn type="submit" color="primary">Salvar</v-btn>
+            <v-row cols="12" class="ma-4">
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.name" label="Nome" outlined dense clearable required></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.email" label="E-mail" outlined dense clearable
+                  required></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.cellPhone" label="Telefone Celular"
+                  v-mask="['(##) ####-####', '(##) #####-####']" outlined dense clearable></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.phone" label="Telefone"
+                  v-mask="['(##) ####-####', '(##) #####-####']" outlined dense clearable></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.address" label="Endereço" outlined dense clearable></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.dateOfBirth" label="Data de Nascimento" type="date" outlined dense
+                  clearable></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.cpf" label="CPF/CNPJ"
+                  v-mask="['###.###.###-##', '##.###.###/####-##']" outlined dense clearable></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.rg" label="RG" v-mask="'##.###.###-#'" outlined dense
+                  clearable></v-text-field>
+              </v-col>
+              <v-col cols="3">
+                <v-text-field v-model="editCustomer.drivingLicenseNumber" label="Número da CNH" outlined dense
+                  clearable></v-text-field>
+              </v-col>
+            </v-row>
+            <v-btn type="submit" color="primary">Salvar</v-btn>
           </v-form>
-      </v-card-text>
-  </v-card>
-</v-dialog>
-</v-container>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -131,86 +149,85 @@ export default Vue.extend({
   name: 'Customers',
 
   data() {
-      return {
-          newCustomer: new Customer(),
-          customers: [] as Customer[],
-          showEditDialog: false,
-          editCustomer: {} as Customer,
-      };
+    return {
+      newCustomer: new Customer(),
+      customers: [] as Customer[],
+      showEditDialog: false,
+      editCustomer: {} as Customer,
+    };
   },
 
   mounted() {
-      this.fetchCustomers();
+    this.fetchCustomers();
   },
 
   methods: {
-      async fetchCustomers() {
-          try {
-              const response = await CustomerService.getAllCustomers();
-              this.customers = response.data;
-          } catch (error) {
-              console.error('Error fetching customers:', error);
-          }
-      },
+    async fetchCustomers() {
+      try {
+        const response = await CustomerService.getAllCustomers();
+        this.customers = response.data;
+      } catch (error) {
+        console.error('Error fetching customers:', error);
+      }
+    },
 
-      updateCustomer(customer: Customer) {
-          this.editCustomer = { ...customer };
-          this.showEditDialog = true;
-      },
+    updateCustomer(customer: Customer) {
+      this.editCustomer = { ...customer };
+      this.showEditDialog = true;
+    },
 
-      async saveUpdatedCustomer() {
-          try {
-              await CustomerService.updateCustomer(this.editCustomer.id, this.editCustomer);
-              this.showEditDialog = false;
-              this.fetchCustomers();
-          } catch (error) {
-              console.error('Error updating customer:', error);
-          }
-      },
+    async saveUpdatedCustomer() {
+      try {
+        await CustomerService.updateCustomer(this.editCustomer.id, this.editCustomer);
+        this.showEditDialog = false;
+        this.fetchCustomers();
+      } catch (error) {
+        console.error('Error updating customer:', error);
+      }
+    },
 
-      async createCustomer() {
-          try {
-              await CustomerService.createCustomer(this.newCustomer);
-              this.newCustomer = new Customer();
-              this.fetchCustomers();
-          } catch (error) {
-              console.error('Error creating customer:', error);
-          }
-      },
+    async createCustomer() {
+      try {
+        await CustomerService.createCustomer(this.newCustomer);
+        this.newCustomer = new Customer();
+        this.fetchCustomers();
+      } catch (error) {
+        console.error('Error creating customer:', error);
+      }
+    },
 
-      async deleteCustomer(id: number) {
-          try {
-              await CustomerService.deleteCustomer(id);
-              this.fetchCustomers();
-              await Swal.fire('Sucesso!', 'Cliente excluído com sucesso!', 'success');
-          } catch (error) {
-              console.error('Error deleting customer:', error);
-          }
-      },
+    async deleteCustomer(id: number) {
+      try {
+        await CustomerService.deleteCustomer(id);
+        this.fetchCustomers();
+        await Swal.fire('Sucesso!', 'Cliente excluído com sucesso!', 'success');
+      } catch (error) {
+        console.error('Error deleting customer:', error);
+      }
+    },
 
-      async confirmDelete(id: number) {
-          try {
-              const confirmed = await Swal.fire({
-                  title: 'Tem certeza que deseja excluir este cliente?',
-                  text: 'Esta ação não poderá ser desfeita!',
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#f44336',
-                  cancelButtonColor: '#f98038',
-                  confirmButtonText: 'Confirmar',
-                  cancelButtonText: 'Cancelar',
-              });
+    async confirmDelete(id: number) {
+      try {
+        const confirmed = await Swal.fire({
+          title: 'Tem certeza que deseja excluir este cliente?',
+          text: 'Esta ação não poderá ser desfeita!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#f44336',
+          cancelButtonColor: '#f98038',
+          confirmButtonText: 'Confirmar',
+          cancelButtonText: 'Cancelar',
+        });
 
-              if (confirmed.isConfirmed) {
-                  await this.deleteCustomer(id);
-              }
-          } catch (error) {
-              console.error('Error deleting customer:', error);
-          }
-      },
+        if (confirmed.isConfirmed) {
+          await this.deleteCustomer(id);
+        }
+      } catch (error) {
+        console.error('Error deleting customer:', error);
+      }
+    },
   },
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
