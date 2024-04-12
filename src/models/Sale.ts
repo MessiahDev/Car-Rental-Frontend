@@ -16,5 +16,4 @@ export default class Sale implements Shared.IEntity {
 
 export interface SalesPerson {
     id: number;
-    // Adicione outras propriedades conforme necessário
 }

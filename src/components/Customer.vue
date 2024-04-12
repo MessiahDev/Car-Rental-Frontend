@@ -3,7 +3,6 @@
 
     <h1>Clientes</h1>
 
-    <!-- Formulário de cadastro de clientes -->
     <v-card>
       <v-card-title>Cadastrar Cliente</v-card-title>
       <v-card-text>
