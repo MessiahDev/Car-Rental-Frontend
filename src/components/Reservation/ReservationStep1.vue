@@ -25,7 +25,7 @@
                   </v-carousel-item>
                 </v-carousel>
                 <v-row>
-                  <v-col style="text-align: center;" class="font2 fontHelvetica">{{ formatVehicleList() }}</v-col>
+                  <v-col  style="text-align: center;" class="font2 fontHelvetica">{{ formatVehicleList(category) }}</v-col>
                 </v-row>
               </v-col>
               <v-col cols="12" style="text-align: center;">
@@ -90,9 +90,9 @@ export default Vue.extend({
       }
     },
 
-    formatVehicleList() {
-      const vehicleModels = this.selectedCategory.vehicles.slice(0, 3).map((v: { model: any; }) => v.model).join(', ');
-      const orSimilar = this.selectedCategory.vehicles.length > 0 ? ', ou similar*' : '';
+    formatVehicleList(category: Category) {
+      const vehicleModels = category.vehicles.slice(0, 3).map((v: { model: any; }) => v.model).join(', ');
+      const orSimilar = category.vehicles.length > 0 ? ', ou similar*' : '';
       return vehicleModels + orSimilar;
     },
 

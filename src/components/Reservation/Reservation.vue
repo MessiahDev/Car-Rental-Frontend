@@ -55,7 +55,7 @@
           :selectedCategory="selectedCategory"
           :startDate="startDate"
           :endDate="endDate"
-          :e1="e1"
+          :e1="Number(e1)"
         />
       </v-stepper-content>
 
