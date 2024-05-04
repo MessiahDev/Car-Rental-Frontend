@@ -98,10 +98,12 @@
 <script lang="ts">
 import Vue from 'vue';
 import Swal from 'sweetalert2';
-import { VehicleService } from '../services/vehicleServices';
-import { CategoryService } from '../services/categoryService';
+//import { VehicleService } from '../services/vehicleServices';
+//import { CategoryService } from '../services/categoryService';
 import Category from '../models/category';
 import Vehicle from '../models/vehicle';
+import vehicleData from '../dataBaseDemo/vehicleDB.json';
+import categoryData from '../dataBaseDemo/categoryDB.json';
 
 export default Vue.extend({
   name: 'Vehicles',
@@ -133,41 +135,49 @@ export default Vue.extend({
   },
 
   methods: {
-    async fetchVehicles() {
+    fetchVehicles() {
       try {
-        const response = await VehicleService.getAllVehicles();
-        this.vehicles = response.data;
+        const response = vehicleData;
+        this.vehicles = response;
       } catch (error) {
         console.error('Error fetching vehicles:', error);
       }
     },
-
-    async updateVehicle(vehicle: Vehicle) {
+    
+    fetchCategories() {
+      try {
+        const response = categoryData;
+        this.categories = response;
+        console.log(response);
+        
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    },
+    
+    updateVehicle(vehicle: Vehicle) {
       this.editVehicle = { ...vehicle };
       this.showEditDialog = true;
     },
 
-    async saveUpdatedVehicle() {
+    saveUpdatedVehicle() {
       try {
-        await VehicleService.updateVehicle(this.editVehicle.id, this.editVehicle);
-        this.showEditDialog = false;
-        await Swal.fire('Sucesso!', 'Veículo atualizado com sucesso!', 'success');
-        this.fetchVehicles();
+        //await VehicleService.updateVehicle(this.editVehicle.id, this.editVehicle);
+        const index = this.vehicles.findIndex(vehicle => vehicle.id === this.editVehicle.id);
+
+        if (index !== -1) {
+          this.$set(this.vehicles, index, this.editVehicle);
+          this.showEditDialog = false;
+          Swal.fire('Sucesso!', 'Veículo atualizado com sucesso!', 'success');
+          this.fetchVehicles()
+        }
+
       } catch (error) {
         console.error('Error updating vehicle:', error);
       }
     },
 
-    async fetchCategories() {
-      try {
-        const response = await CategoryService.getAllCategories();
-        this.categories = response.data;
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-      }
-    },
-
-    async createVehicle() {
+    createVehicle() {
       try {
         if (this.newVehicle.name && this.newVehicle.model && this.newVehicle.categoryId) {
 
@@ -179,28 +189,29 @@ export default Vue.extend({
           }
 
           const newVehicle: Vehicle = {
-            id: 0,
+            id: (this.vehicles.length + 2),
             name: this.newVehicle.name,
             model: this.newVehicle.model,
             categoryId: category.id,
             customerId: 0,
-            registerDate: new Date(),
+            registerDate: String(new Date()),
             isActive: true
           };
 
-          const response = await VehicleService.createVehicle(newVehicle);
+          //const response = await VehicleService.createVehicle(newVehicle);
+          this.vehicles.push(newVehicle)
 
-          if (response.status === 201) {
-            console.log('Veículo criado com sucesso:', response.data);
+          if (newVehicle) {
+            console.log('Veículo criado com sucesso:', newVehicle);
             this.newVehicle = { name: '', model: '', categoryId: 0 };
             this.fetchVehicles();
-            await Swal.fire('Sucesso!', 'Veículo criado com sucesso!', 'success');
+            Swal.fire('Sucesso!', 'Veículo criado com sucesso!', 'success');
           } else {
-            console.error('Erro ao criar veículo:', response.statusText);
+            console.error('Erro ao criar veículo:');
           }
         }
         else {
-          await Swal.fire('Aviso!', 'Todos os campos devem ser preenchidos!', 'warning');
+          Swal.fire('Aviso!', 'Todos os campos devem ser preenchidos!', 'warning');
           return true;
         }
       } catch (error) {
@@ -208,11 +219,17 @@ export default Vue.extend({
       }
     },
 
-    async deleteVehicle(id: number) {
+    deleteVehicle(id: number) {
       try {
-        await VehicleService.deleteVehicle(id);
-        this.fetchVehicles();
-        await Swal.fire('Sucesso!', 'Veículo excluído com sucesso!', 'success');
+        //await VehicleService.deleteVehicle(id);
+        const index = this.vehicles.findIndex(vehicle => vehicle.id === id);
+
+        if (index !== -1) {
+          this.vehicles.splice(index, 1);
+          this.fetchVehicles();
+          Swal.fire('Sucesso!', 'Veículo excluído com sucesso!', 'success');
+        }
+        
       } catch (error) {
         console.error('Error deleting vehicle:', error);
       }
@@ -244,7 +261,7 @@ export default Vue.extend({
       return category ? category.group : '';
     },
 
-    async createCategory() {
+    createCategory() {
       try {
         const newCategory: Category = {
           id: 0,
@@ -255,7 +272,8 @@ export default Vue.extend({
           vehicles: []
         };
 
-        await CategoryService.createCategory(newCategory);
+        //await CategoryService.createCategory(newCategory);
+        this.categories.push(newCategory)
 
         this.newCategory.group = '';
         this.newCategory.description = '';

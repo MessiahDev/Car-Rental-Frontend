@@ -144,7 +144,7 @@
                             </v-col>
                             <v-col>
                                 <v-carousel style="height: 170px;" :continuous="true" show-arrows-on-hover
-                                    hide-delimiter-background delimiter-icon="mdi-circle" cycle>
+                                    hide-delimiters cycle>
                                     <v-carousel-item v-for="vehicle in selectedCategory.vehicles" :key="vehicle.id">
                                         <v-img :src="vehicle.image"></v-img>
                                     </v-carousel-item>
@@ -159,7 +159,7 @@
                                     dos modelos de carro acima, estando sujeito à disponibilidade da agência.</v-col>
                             </v-col>
                         </v-card>
-                        <v-row class="cardPrice4 fontHelvética">
+                        <v-row class="cardPrice4 fontHelvetica">
                             <v-col cols="8">
                                 Diária {{ days }}x {{ money(selectedCategory.price) }}
                             </v-col>
@@ -167,7 +167,7 @@
                                 {{ Number(totalDaysValue()).toMoeda(true) }}
                             </v-col>
                             <v-col cols="8" class="fontHelvetica">
-                                Taxa de aluguel (12%)
+                                Taxa 12%
                             </v-col>
                             <v-col cols="4">
                                 {{ Number(calculedTax()).toMoeda(true) }}
@@ -360,6 +360,6 @@ export default Vue.extend({
     margin: 0px;
     margin-top: 1rem;
     padding: 10px;
-    height: 8rem;
+    height: 9rem;
 }
 </style>

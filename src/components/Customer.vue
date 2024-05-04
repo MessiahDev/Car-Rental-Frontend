@@ -141,8 +141,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import Swal from 'sweetalert2';
-import { CustomerService } from '../services/customerService';
+//import { CustomerService } from '../services/customerService';
 import Customer from '../models/customer';
+import customerData from '../dataBaseDemo/customerDB.json';
 
 export default Vue.extend({
   name: 'Customers',
@@ -161,10 +162,11 @@ export default Vue.extend({
   },
 
   methods: {
-    async fetchCustomers() {
+    fetchCustomers() {
       try {
-        const response = await CustomerService.getAllCustomers();
-        this.customers = response.data;
+        //const response = await CustomerService.getAllCustomers();
+        const response = customerData;
+        this.customers = response;
       } catch (error) {
         console.error('Error fetching customers:', error);
       }
@@ -177,7 +179,9 @@ export default Vue.extend({
 
     async saveUpdatedCustomer() {
       try {
-        await CustomerService.updateCustomer(this.editCustomer.id, this.editCustomer);
+        //await CustomerService.updateCustomer(this.editCustomer.id, this.editCustomer);
+
+        this.customers.splice(this.editCustomer.id, 1, this.editCustomer)
         this.showEditDialog = false;
         this.fetchCustomers();
       } catch (error) {
@@ -185,9 +189,10 @@ export default Vue.extend({
       }
     },
 
-    async createCustomer() {
+    createCustomer() {
       try {
-        await CustomerService.createCustomer(this.newCustomer);
+        //await CustomerService.createCustomer(this.newCustomer);
+        this.customers.push(this.newCustomer)
         this.newCustomer = new Customer();
         this.fetchCustomers();
       } catch (error) {
@@ -195,11 +200,12 @@ export default Vue.extend({
       }
     },
 
-    async deleteCustomer(id: number) {
+    deleteCustomer(id: number) {
       try {
-        await CustomerService.deleteCustomer(id);
+        //await CustomerService.deleteCustomer(id);
+        this.customers.splice(id, 1);
         this.fetchCustomers();
-        await Swal.fire('Sucesso!', 'Cliente excluído com sucesso!', 'success');
+        Swal.fire('Sucesso!', 'Cliente excluído com sucesso!', 'success');
       } catch (error) {
         console.error('Error deleting customer:', error);
       }

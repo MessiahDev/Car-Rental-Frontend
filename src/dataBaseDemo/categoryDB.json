@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "group": "GRUPO B",
+        "description": "COMPACTO COM AR",
+        "price": 89.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 2,
+        "group": "GRUPO CE",
+        "description": "ECONÔMICO ESPECIAL C/AR",
+        "price": 99.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 3,
+        "group": "GRUPO CS",
+        "description": "ECONÔMICO SEDAN C/AR",
+        "price": 119.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 4,
+        "group": "GRUPO F",
+        "description": "INTERMEDIÁRIO",
+        "price": 130.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 5,
+        "group": "GRUPO FH",
+        "description": "INTERMEDIÁRIO HATCH AUTOMÁTICO",
+        "price": 145.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 6,
+        "group": "GRUPO FS",
+        "description": "INTERMEDIÁRIO SEDAN",
+        "price": 140.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 7,
+        "group": "GRUPO FX",
+        "description": "INTERMEDIÁRIO AUTOMÁTICO",
+        "price": 146.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 8,
+        "group": "GRUPO GC",
+        "description": "SUV COMPACTO AUTOMÁTICO",
+        "price": 150.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 9,
+        "group": "GRUPO GX",
+        "description": "SUV AUTOMÁTICO",
+        "price": 197.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 10,
+        "group": "GRUPO L",
+        "description": "EXECUTIVO",
+        "price": 359.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 11,
+        "group": "GRUPO LW",
+        "description": "SUV ESPECIAL",
+        "price": 503.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 12,
+        "group": "GRUPO NX",
+        "description": "PICK-UP DE LUXO",
+        "price": 689.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 13,
+        "group": "GRUPO RX",
+        "description": "MINIVAN AUTO 7 LUGARES",
+        "price": 539.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 14,
+        "group": "GRUPO V",
+        "description": "PICK-UP COM AR",
+        "price": 395.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    },
+    {
+        "id": 15,
+        "group": "GRUPO VP",
+        "description": "PICK-UP COM AR PLUS",
+        "price": 647.95,
+        "totalPrice": 0.00,
+        "vehicles": []
+    }
+]

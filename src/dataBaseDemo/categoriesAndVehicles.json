@@ -1,0 +1,434 @@
+[
+    {
+        "id": 1,
+        "group": "GRUPO B",
+        "description": "COMPACTO COM AR",
+        "price": 89.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 2,
+                "name": "KWID",
+                "image": "https://imgur.com/cspg6qV.png",
+                "model": "Renaut Kwid 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 1,
+                "category": null
+            },
+            {
+                "id": 3,
+                "name": "MOBI",
+                "image": "https://imgur.com/1C1BdJo.png",
+                "model": "Fiat Mobi 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 1,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "group": "GRUPO CE",
+        "description": "ECONÔMICO ESPECIAL C/AR",
+        "price": 99.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 4,
+                "name": "ARGO",
+                "image": "https://imgur.com/lkA790R.png",
+                "model": "Fiat Argo 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 2,
+                "category": null
+            },
+            {
+                "id": 5,
+                "name": "C3",
+                "image": "https://imgur.com/b6XzLaS.png",
+                "model": "Citroen C3 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 2,
+                "category": null
+            },
+            {
+                "id": 6,
+                "name": "HB20",
+                "image": "https://imgur.com/3tLN370.png",
+                "model": "Hyundai Hb20 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 2,
+                "category": null
+            },
+            {
+                "id": 7,
+                "name": "ONIX",
+                "image": "https://imgur.com/K6s56ti.png",
+                "model": "Chevrolet Onix 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 2,
+                "category": null
+            },
+            {
+                "id": 8,
+                "name": "Polo",
+                "image": "https://imgur.com/8Bl91ym.png",
+                "model": "VW Polo 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 2,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "group": "GRUPO CS",
+        "description": "ECONÔMICO SEDAN C/AR",
+        "price": 119.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 9,
+                "name": "LOGAN",
+                "image": "https://imgur.com/NVjFulJ.png",
+                "model": "Renault Logan 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 3,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "group": "GRUPO F",
+        "description": "INTERMEDIÁRIO",
+        "price": 130.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 10,
+                "name": "GOL",
+                "image": "https://imgur.com/TEnkku7.png",
+                "model": "VW Gol 1.6",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 4,
+                "category": null
+            },
+            {
+                "id": 11,
+                "name": "SANDERO",
+                "image": "https://imgur.com/va5EHpC.png",
+                "model": "Renaut Sandero 1.6",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 4,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "group": "GRUPO FH",
+        "description": "INTERMEDIÁRIO HATCH AUTOMÁTICO",
+        "price": 145.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 12,
+                "name": "PEUGEOT",
+                "image": "https://imgur.com/IG1m3Z8.png",
+                "model": "Peugeot 206 1.6",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 5,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "group": "GRUPO FS",
+        "description": "INTERMEDIÁRIO SEDAN",
+        "price": 140.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 13,
+                "name": "CRONOS",
+                "image": "https://imgur.com/5UijbZG.png",
+                "model": "Fiat Cronos 1.3",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 6,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "group": "GRUPO FX",
+        "description": "INTERMEDIÁRIO AUTOMÁTICO",
+        "price": 146.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 14,
+                "name": "HB20S",
+                "image": "https://imgur.com/bN4kXd1.png",
+                "model": "Hyundai HB20S 1.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 7,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "group": "GRUPO GC",
+        "description": "SUV COMPACTO AUTOMÁTICO",
+        "price": 150.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 15,
+                "name": "CACTUS",
+                "image": "https://imgur.com/8fHeRai.png",
+                "model": "Citroen C4 1.6",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 8,
+                "category": null
+            },
+            {
+                "id": 16,
+                "name": "KICKS",
+                "image": "https://imgur.com/lo8TBzb.png",
+                "model": "Nissan Kicks 1.6",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 8,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "group": "GRUPO GX",
+        "description": "SUV AUTOMÁTICO",
+        "price": 197.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 17,
+                "name": "RENEGADE",
+                "image": "https://imgur.com/jSqVQ15.png",
+                "model": "Jeep Renegade 1.3",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 9,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "group": "GRUPO L",
+        "description": "EXECUTIVO",
+        "price": 359.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 18,
+                "name": "COROLA",
+                "image": "https://imgur.com/Q6nOtLH.png",
+                "model": "Toyota Corolla 2.0",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 10,
+                "category": null
+            },
+            {
+                "id": 19,
+                "name": "CRUZE",
+                "image": "https://imgur.com/lYmLJnv.png",
+                "model": "GM Cruze 1.4 Turbo",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 10,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "group": "GRUPO LW",
+        "description": "SUV ESPECIAL",
+        "price": 503.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 20,
+                "name": "COMPASS",
+                "image": "https://imgur.com/abnKluV.png",
+                "model": "Jeep Compass 1.3 Turbo",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 11,
+                "category": null
+            },
+            {
+                "id": 21,
+                "name": "ECLIPSE",
+                "image": "https://imgur.com/l1u6Xkn.png",
+                "model": "Mitsubishi Eclipse Cross 1.5 T",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 11,
+                "category": null
+            },
+            {
+                "id": 22,
+                "name": "PEUGEOT3008",
+                "image": "https://imgur.com/909ZYR1.png",
+                "model": "Peugeot 3008 1.6 Turbo",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 11,
+                "category": null
+            },
+            {
+                "id": 23,
+                "name": "TIGGO",
+                "image": "https://imgur.com/xZJCFE6.png",
+                "model": "Tiggo 7 1.6 Turbo",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 11,
+                "category": null
+            },
+            {
+                "id": 24,
+                "name": "TUCSON",
+                "image": "https://imgur.com/6gFvaPW.png",
+                "model": "Hyundai New Tucson 1.6 Turbo",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 11,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "group": "GRUPO NX",
+        "description": "PICK-UP DE LUXO",
+        "price": 689.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 25,
+                "name": "TORO",
+                "image": "https://imgur.com/3Vto7eQ.png",
+                "model": "Fiat Toro 1.3 Turbo",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 12,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "group": "GRUPO RX",
+        "description": "MINIVAN AUTO 7 LUGARES",
+        "price": 539.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 26,
+                "name": "SPIN",
+                "image": "https://imgur.com/QVCu0r7.png",
+                "model": "GM Spin 1.8",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 13,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "group": "GRUPO V",
+        "description": "PICK-UP COM AR",
+        "price": 395.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 27,
+                "name": "STRADA",
+                "image": "https://imgur.com/cpgTObJ.png",
+                "model": "Fiat Strada 1.4",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 14,
+                "category": null
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "group": "GRUPO VP",
+        "description": "PICK-UP COM AR PLUS",
+        "price": 647.95,
+        "totalPrice": 0.00,
+        "vehicles": [
+            {
+                "id": 28,
+                "name": "STRADAPLUS",
+                "image": "https://imgur.com/RB8XlNL.png",
+                "model": "Fiat Strada Cabine Dupla 1.4",
+                "customerId": 0,
+                "registerDate": "2024-03-29T00:00:00",
+                "isActive": true,
+                "categoryId": 15,
+                "category": null
+            }
+        ]
+    }
+]

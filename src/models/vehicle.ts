@@ -4,10 +4,9 @@ export default class Vehicle implements Shared.IEntity {
     public name: string = '';
     public model: string = '';
     public customerId: number = 0;
-    public registerDate: Date | undefined;
+    public registerDate: string = '';
     public isActive: boolean = false;
     public categoryId: number = 0;
-    public category?: Category;
   }
   
   export interface Category {

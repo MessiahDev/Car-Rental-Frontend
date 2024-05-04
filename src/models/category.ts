@@ -14,6 +14,6 @@ export interface Vehicle {
     image:  string;
     model: string;
     customerId: number;
-    registerDate: Date | undefined;
+    registerDate: string;
     isActive: boolean;
 }

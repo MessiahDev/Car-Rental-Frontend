@@ -5,7 +5,7 @@ export default class Customer implements Shared.IEntity {
     public phone?: string = '';
     public cellPhone?: string = '';
     public address?: string = '';
-    public dateOfBirth?: Date;
+    public dateOfBirth?: string = '';
     public cpf?: string = '';
     public rg?: string = '';
     public drivingLicenseNumber?: string;

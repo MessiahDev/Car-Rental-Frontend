@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { VehicleService } from '../services/vehicleServices'
-import Vehicle from '../models/vehicle'
+//import { VehicleService } from '../services/vehicleServices'
+import vehicleData from '../dataBaseDemo/vehicleDB.json'
 
 export default Vue.extend({
   name: 'Dashboard',
@@ -29,7 +29,7 @@ export default Vue.extend({
         { title: 'Total de Vendas', subtitle: 'Realizadas', value: '30' },
       ],
 
-      vehicles: [] as Vehicle[],
+      vehicles: 0,
     };
   },
   mounted() {
@@ -37,10 +37,11 @@ export default Vue.extend({
   },
 
   methods: {
-    async fetchVehicles() {
+    fetchVehicles() {
       try {
-        const response = await VehicleService.getVehicleCount();
-        this.vehicles = [response.data];
+        //const response = await VehicleService.getVehicleCount();
+        const response = vehicleData.length;
+        this.vehicles = response;
         this.cards[0].value = this.vehicles.toString();
       } catch (error) {
         console.error('Error fetching vehicles:', error);

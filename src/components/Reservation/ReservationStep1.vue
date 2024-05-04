@@ -18,7 +18,7 @@
                 <div class="title-section font1 fontHelvetica">{{ category.group }} | {{ category.description }}</div>
               </v-col>
               <v-col>
-                <v-carousel style="height: 170px;" :continuous="true" show-arrows-on-hover hide-delimiter-background
+                <v-carousel style="height: 170px;" :continuous="true" show-arrows-on-hover hide-delimiters
                   delimiter-icon="mdi-circle" cycle>
                   <v-carousel-item v-for="vehicle in category.vehicles" :key="vehicle.id">
                     <v-img :src="vehicle.image"></v-img>
@@ -53,7 +53,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import Category from '@/models/category';
-import { CategoryService } from '@/services/categoryService';
+//import { CategoryService } from '@/services/categoryService';
+import categoriesAndVehiclesData from '../../dataBaseDemo/categoriesAndVehicles.json';
 
 export default Vue.extend({
   name: 'ReservationStep1',
@@ -80,10 +81,11 @@ export default Vue.extend({
   },
 
   methods: {
-    async fetchCategories() {
+    fetchCategories() {
       try {
-        const response = await CategoryService.getCategoriesAndVehicles();
-        this.categories = response.data;
+        //const response = await CategoryService.getCategoriesAndVehicles();
+        const response = categoriesAndVehiclesData
+        this.categories = response;
         this.groupChosen = false;
       } catch (error) {
         console.error('Error fetching categories:', error);
