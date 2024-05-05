@@ -211,7 +211,7 @@ export default Vue.extend({
             condutorAdcional: false,
             condutorJovem: false,
             limpezaGarantida: false,
-        };
+        }
     },
 
     watch: {
