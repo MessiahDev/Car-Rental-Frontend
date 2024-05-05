@@ -148,7 +148,6 @@ export default Vue.extend({
       try {
         const response = categoryData;
         this.categories = response;
-        console.log(response);
         
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -202,7 +201,6 @@ export default Vue.extend({
           this.vehicles.push(newVehicle)
 
           if (newVehicle) {
-            console.log('Veículo criado com sucesso:', newVehicle);
             this.newVehicle = { name: '', model: '', categoryId: 0 };
             this.fetchVehicles();
             Swal.fire('Sucesso!', 'Veículo criado com sucesso!', 'success');
